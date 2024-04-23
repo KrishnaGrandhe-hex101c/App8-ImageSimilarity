@@ -154,7 +154,7 @@
                 localPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
 		localPercentage *= 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
 		localPercentage *= 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
-		godPercentage += localPercentage ** (1/localPercentage); 
+		godPercentage += localPercentage ** 2; 
           
        }
 		//dividing by the total to get the average
