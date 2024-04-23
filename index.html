@@ -27,7 +27,7 @@
   This app will determine the similarity between two images to diagnose if an unknown image matches a known result.
  
   Known Issues:
- blah
+	This app should not be used to diagnose any disease, it was just made as an assignment by researchers in the Freshman Research Institute.
 -->
 
  <head>
@@ -100,14 +100,7 @@
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
         
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
-
-          /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
-          /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-          /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
-          
-          
-          
+  
           
         } // end of img.onload
         
@@ -151,10 +144,10 @@
 	//finds percent similarity between each pixel, then adds it to a god total
 	for(let i=0;i<imgData.data.length;i+=4)   {
 		var localPercentage = 1;
-                localPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
-		localPercentage *= 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
-		localPercentage *= 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
-		godPercentage += localPercentage ** 2; 
+                localPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0; //finds percentage similarity in red pixels//
+		localPercentage *= 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0; //finds percentage similarity in green pixels//
+		localPercentage *= 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0; //finds percentage similarity in blue pixels//
+		godPercentage += localPercentage ** 2; //adds to global sum to be averaged later//
           
        }
 		//dividing by the total to get the average
@@ -190,10 +183,10 @@
     <h1>Primary Colors</h1></div><!-- /header -->
 	  <!--this is all the HTML for the first input elements-->
     <div data-role="content">	
-      <h2>Push button to take picture.</h2>
+      <h2>Push button to take picture.</h2> <!--Header, has directions for user-->
 	<center></center><h1 border:3px solid #008080;" id="display">Percentage Similarity Displayed Here</h1></center>
       <div>
-        Press orange button to create or choose image file:
+        Press orange button to create or choose image file: <!--Text with directions for user-->
         <input type="file" id="fileInput" STYLE="background-color: #A9A9A9;">
       </div> 
 
@@ -207,7 +200,7 @@
         context.font = '20pt Georgia';
         context.fillStyle = "teal";
         context.fillText("Original image will go here", 150, 250);
-	
+	//Canvas 1 format, places the text in the center and makes the font Georgia and the text teal// 
       </script>
 <!--all the elements for the second input elements-->
 	<div data-role="content">	
@@ -226,7 +219,7 @@
         context2.font = '20pt Georgia';
         context2.fillStyle = "teal";
         context2.fillText("Original image will go here", 150, 250);
-	//Canvas 2 format
+	//Canvas 2 format, places the text in the center and makes the font Georgia and the text teal// 
       </script>
 
     </div><!-- /content -->
