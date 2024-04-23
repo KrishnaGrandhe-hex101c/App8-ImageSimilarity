@@ -153,13 +153,13 @@
 
 	var godPercentage = 1; //original similarity, assumes 100%
 	for(let i=0;i<imgData.data.length;i+=4)   {
-              godpercentage *= Math.abs(imgData2.data[i]-imgData.data[i])/255;
-		godpercentage *= Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255;
-		godpercentage *= Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255;
-		godpercentage *= Math.abs(imgData2.data[i+3]-imgData.data[i+3])/255;
+              godPercentage *= Math.abs(imgData2.data[i]-imgData.data[i])/255;
+		godPercentage *= Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255;
+		godPercentage *= Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255;
+		godPercentage *= Math.abs(imgData2.data[i+3]-imgData.data[i+3])/255;
           
        }
-		console.log(godpercentage);
+		console.log(godPercentage);
 		//each line compares the r,g,b value for each pixel and finds the proportion similarity and updated godpercentage accordingly
 		
           
