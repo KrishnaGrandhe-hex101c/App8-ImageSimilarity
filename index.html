@@ -154,7 +154,8 @@
 	var godPercentage = 1; //original similarity, assumes 100%
 	
 	for(let i=0;i<10;i+=4)   {
-		console.log(imgData.data[i] + " and then " + imgData2.data[i]);
+		console.log((imgData.data[i]-imgData2.data[i])/255);
+		
 	}
 	for(let i=0;i<imgData.data.length;i+=4)   {
               godPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
