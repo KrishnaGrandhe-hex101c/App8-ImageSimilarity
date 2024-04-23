@@ -153,13 +153,14 @@
 		
 	}
 	for(let i=0;i<imgData.data.length;i+=4)   {
-                godPercentage += 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
-		godPercentage += 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
-		godPercentage += 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
-		
+		var localPercentage = 1;
+                localPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
+		localPercentage *= 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
+		localPercentage *= 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
+		godPercentage += localPercentage; 
           
        }
-		console.log(godPercentage/imgData.data.length*4/3);
+		console.log(godPercentage/(imgData.data.length/4));
 		//each line compares the r,g,b value for each pixel and finds the proportion similarity and updated godpercentage accordingly
 		
           
