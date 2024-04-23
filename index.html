@@ -78,9 +78,9 @@
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
-  var fileInput2 = document.getElementById('fileInput2');
+  var fileInput = document.getElementById('fileInput2');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
-  var messageDisplayArea2 = document.getElementById('messageDisplayArea2');
+  var messageDisplayArea = document.getElementById('messageDisplayArea2');
   /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
   fileInput.addEventListener('change', function(e) {
     var file = fileInput.files[0];
@@ -172,22 +172,18 @@
         Press orange button to create or choose image file:
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
       </div>
-     
-      <div id="messageDisplayArea"></div>
-   
-      
-      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
- 
-
-      <div data-role="content">	
+     <div data-role="content">	
       <h2>Push button to take picture.</h2>
       <div>
         Press orange button to create or choose image file:
         <input type="file" id="fileInput2" STYLE="background-color: #FF6600;">
       </div>
-       <div id="messageDisplayArea2"></div>
+      <div id="messageDisplayArea"></div>
+      <div id="messageDisplayArea2"></div>
+      
+      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
+      <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';
