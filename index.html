@@ -77,12 +77,16 @@
 
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
+  var firstImageIn = false;
+  var secondImageIn = false;
+	 
   var fileInput = document.getElementById('fileInput');
   var fileInput2 = document.getElementById('fileInput2');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
   var messageDisplayArea2 = document.getElementById('messageDisplayArea2');
   /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
   fileInput.addEventListener('change', function(e) {
+	  firstImageIn = true;
     var file = fileInput.files[0];
     var imageType = /image.*/;
     /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
@@ -121,6 +125,7 @@
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
   fileInput2.addEventListener('change', function(e) {
+	  secondImageIn = true;
     var file = fileInput2.files[0];
     var imageType = /image.*/;
     /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
@@ -158,7 +163,14 @@
       messageDisplayArea2.innerHTML = "File not supported!"
     } // end of the else statement if file in NOT an image
   });
+	 if(firstImageIn && secondImageIn){
+	console.log("cooking!");
+}
  } // end of the window.onload function
+
+if(firstImageIn && secondImageIn){
+	console.log("cook!");
+}
  </script>
  </head>
 
