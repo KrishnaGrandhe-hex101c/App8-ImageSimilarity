@@ -152,17 +152,21 @@
 		console.log((imgData.data[i]-imgData2.data[i])/255);
 		
 	}
-	for(let i=0;i<imgData.data.length;i+=4)   {
-		var localPercentage = 1;
-                localPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
-		localPercentage *= 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
-		localPercentage *= 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
-		godPercentage += localPercentage; 
+	function result(){
+		for(let i=0;i<imgData.data.length;i+=4)   {
+			var localPercentage = 1;
+               		 localPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
+			 localPercentage *= 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
+			 localPercentage *= 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
+			 godPercentage += localPercentage; 
+			 var results = document.getELementById("Results");
+			 results.innerHTML = "Percent similarity between two images =" + godPercentage //Outputting results
           
        }
-		console.log(godPercentage/(imgData.data.length/4));
-		//each line compares the r,g,b value for each pixel and finds the proportion similarity and updated godpercentage accordingly
-		
+	
+		godPercentage = godPercentage/(imgData.data.length/4)
+		console.log();
+		//each line compares the r,g,b value for each pixel and finds the proportion similarity and updated godpercentage accordingly		
           
         } // end of img.onload
         
@@ -224,6 +228,15 @@
         context2.fillText("Original image will go here", 10, 20);
 	//Canvas 2 format
       </script>
+
+	<div data-role="content">
+		<h2>Click the button below to go to the results page.</h2>
+			<button class="w3-btn w3-gray w3-round"> Next Page </button>
+	</div>
+
+<div class="page" id="Results">
+	<button class="w3-btn w3-gray w3-round" onclick="result();" > Get Results </button>
+		
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
