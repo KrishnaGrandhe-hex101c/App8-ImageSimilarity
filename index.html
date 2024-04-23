@@ -150,23 +150,17 @@
 		
            var imgData = context.getImageData(0, 0, 600, 500); //extracts image data
 	var imgData2 = context2.getImageData(0, 0, 600, 500); //extracts image data
-		for(let i=0;i<imgData2.data.length;i+=4)   {
-              imgData2.data[i+0] = 0; //setting red to 0
-              imgData2.data[i+1] = 0; //setting green to 0
-              imgData2.data[i+2] = imgData.data[i+2]; //keeping blue the same
-              imgData2.data[i+3] = imgData.data[i+3]; //keeping alpha the same
+
+	var godPercentage = 1; //original similarity, assumes 100%
+	for(let i=0;i<imgData.data.length;i+=4)   {
+              godpercentage *= Math.abs(imgData2.data[i]-imgData.data[i])/255;
+		godpercentage *= Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255;
+		godpercentage *= Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255;
+		godpercentage *= Math.abs(imgData2.data[i+3]-imgData.data[i+3])/255;
           
        }
-		console.log('yay2!');
-        //the loop below runs through the pixel data of the image (r,g,b,a)
-       for(let i=0;i<imgData.data.length;i+=4)   {
-              imgData.data[i+0] = 0; //setting red to 0
-              imgData.data[i+1] = 0; //setting green to 0
-              imgData.data[i+2] = imgData.data[i+2]; //keeping blue the same
-              imgData.data[i+3] = imgData.data[i+3]; //keeping alpha the same
-          
-       }
-		console.log('yay!');
+		console.log(godpercentage);
+		//each line compares the r,g,b value for each pixel and finds the proportion similarity and updated godpercentage accordingly
 		
           
         } // end of img.onload
