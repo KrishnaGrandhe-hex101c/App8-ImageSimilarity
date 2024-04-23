@@ -13,7 +13,7 @@
   triedel@utexas.edu
  
   Authors in chronological order of contribution:
-  Author 1: Timothy E. Riedel YOOOOOO
+  Author 1: Timothy E. Riedel 
   Author 2: Rotem Ris, Jeeyaben Bhakta, Alyiah Sabrina, Krishna Grandhe, Kritika Ramesh, Nick Maxon
   
   References:
@@ -77,14 +77,12 @@
 
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
-  var firstImageIn = false;
-  var secondImageIn = false;
-	 
+//gets the fileinput and text for both image sources	 
   var fileInput = document.getElementById('fileInput');
   var fileInput2 = document.getElementById('fileInput2');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
   var messageDisplayArea2 = document.getElementById('messageDisplayArea2');
-  /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
+  /* First input listener for the first image */
   fileInput.addEventListener('change', function(e) {
 	  firstImageIn = true;
     var file = fileInput.files[0];
@@ -124,6 +122,8 @@
       messageDisplayArea.innerHTML = "File not supported!"
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
+
+//second image input listener, upon upload does the math for similiarity
   fileInput2.addEventListener('change', function(e) {
 	  secondImageIn = true;
     var file = fileInput2.files[0];
@@ -144,14 +144,11 @@
 		
 		
         var imgData = context.getImageData(0, 0, 600, 500); //extracts image data
-	var imgData2 = context2.getImageData(0, 0, 600, 500); //extracts image data
+	var imgData2 = context2.getImageData(0, 0, 600, 500); //extracts image2 data
 
-	var godPercentage = 0; //original similarity, assumes 100%
+	var godPercentage = 0; //original similarity, uses to average
 	
-	for(let i=0;i<10;i+=4)   {
-		console.log((imgData.data[i]-imgData2.data[i])/255);
-		
-	}
+	//finds percent similarity between each pixel, then adds it to a god total
 	for(let i=0;i<imgData.data.length;i+=4)   {
 		var localPercentage = 1;
                 localPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
@@ -160,6 +157,7 @@
 		godPercentage += localPercentage ** (1/localPercentage); 
           
        }
+		//dividing by the total to get the average
 		console.log(godPercentage/(imgData.data.length/4));
 		//each line compares the r,g,b value for each pixel and finds the proportion similarity and updated godpercentage accordingly
 		
@@ -186,6 +184,7 @@
   <div data-role="page">
     <div data-role="header">
     <h1>Primary Colors</h1></div><!-- /header -->
+	  //this is all the HTML for the first input elements
     <div data-role="content">	
       <h2>Push button to take picture.</h2>
       <div>
@@ -203,7 +202,7 @@
         context.font = '20pt Calibri';
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
-	//Canvas two format 
+	//all the elements for the second input elements
       </script>
 
 	<div data-role="content">	
