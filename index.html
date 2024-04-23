@@ -78,9 +78,9 @@
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
-  var fileInput = document.getElementById('fileInput2');
+  var fileInput2 = document.getElementById('fileInput2');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
-  var messageDisplayArea = document.getElementById('messageDisplayArea2');
+  var messageDisplayArea2 = document.getElementById('messageDisplayArea2');
   /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
   fileInput.addEventListener('change', function(e) {
     var file = fileInput.files[0];
@@ -193,6 +193,7 @@
         context.font = '20pt Calibri';
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
+	      
         var canvas2 = document.getElementById('myCanvas2');
         var context2 = canvas2.getContext("2d");
         context2.font = '20pt Calibri';
