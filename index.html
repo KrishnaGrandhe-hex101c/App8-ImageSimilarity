@@ -158,7 +158,10 @@
           
        }
 		//dividing by the total to get the average
-		console.log(godPercentage/(imgData.data.length/4));
+		godPercentage = godPercentage/(imgData.data.length/4) * 100;
+		var output = document.getElementById("display");
+		output.innerHTML = "Percentage Similarity is " + godPercentage;
+		console.log(godPercentage);
 		//each line compares the r,g,b value for each pixel and finds the proportion similarity and updated godpercentage accordingly
 		
           
@@ -177,6 +180,7 @@
   });
 	 
  } // end of the window.onload function
+	
  </script>
  </head>
 
@@ -187,10 +191,11 @@
 	  <!--this is all the HTML for the first input elements-->
     <div data-role="content">	
       <h2>Push button to take picture.</h2>
+	<h1 id="display">Percentage Similarity Displayed Here</h1>
       <div>
         Press orange button to create or choose image file:
         <input type="file" id="fileInput" STYLE="background-color: #A9A9A9;">
-      </div>
+      </div> 
 
      	
 	<div id="messageDisplayArea"></div>
