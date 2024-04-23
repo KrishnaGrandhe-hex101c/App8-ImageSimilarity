@@ -152,12 +152,16 @@
 	var imgData2 = context2.getImageData(0, 0, 600, 500); //extracts image data
 
 	var godPercentage = 1; //original similarity, assumes 100%
+	
+	for(let i=0;i<10;i+=4)   {
+		console.log(imgData.data[i] + " and then " + imgData2.data[i]);
+	}
 	for(let i=0;i<imgData.data.length;i+=4)   {
-              godPercentage *= Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
-		godPercentage *= Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
-		godPercentage *= Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
-		godPercentage *= Math.abs(imgData2.data[i+3]-imgData.data[i+3])/255.0;
-		console.log(godPercentage);
+              godPercentage *= 1 - Math.abs(imgData2.data[i]-imgData.data[i])/255.0;
+		
+		godPercentage *= 1 - Math.abs(imgData2.data[i+1]-imgData.data[i+1])/255.0;
+		godPercentage *= 1 - Math.abs(imgData2.data[i+2]-imgData.data[i+2])/255.0;
+		
           
        }
 		console.log(godPercentage);
